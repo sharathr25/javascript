@@ -115,7 +115,7 @@ class LinkedList {
     while (currentNode) {
       if (
         cb(currentNode.value) ||
-        value === this.compare.equals(value, currentNode.value)
+        this.compare.equals(value, currentNode.value)
       ) {
         return currentNode
       }
