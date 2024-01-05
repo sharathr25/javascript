@@ -1,4 +1,23 @@
 /**
+Given the head of a linked list, rotate the list to the right by k places.
+Example 1:
+Input: head = [1,2,3,4,5], k = 2
+          1 -> 2 -> 3 -> 4 -> 5
+rotate 1: 5 -> 1 -> 2 -> 3 -> 4
+rotate 2: 4 -> 5 -> 1 -> 2 -> 3
+Output: [4,5,1,2,3]
+
+Example 2:
+Input: head = [0,1,2], k = 4
+          0 -> 1 -> 2
+rotate 1: 2 -> 0 -> 1
+rotate 2: 1 -> 2 -> 0
+rotate 3: 0 -> 1 -> 2
+rotate 4: 2 -> 0 -> 1
+Output: [2,0,1]
+ */
+
+/**
  * Definition for singly-linked list.
  * function ListNode(val, next) {
  *     this.val = (val===undefined ? 0 : val)
