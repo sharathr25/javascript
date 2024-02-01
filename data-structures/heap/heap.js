@@ -1,15 +1,15 @@
-const Comparator = require('../Comparator')
+const Comparator = require("../Comparator");
 
 class Heap {
   /**
    *
    * @param {Function} [comapareFunction]
    */
-  constructor (comapareFunction) {
-    this.items = []
-    this.size = 0
-    this.maxSize = 10
-    this.compare = new Comparator(comapareFunction)
+  constructor(comapareFunction) {
+    this.items = [];
+    this.size = 0;
+    this.maxSize = 10;
+    this.compare = new Comparator(comapareFunction);
   }
 
   /**
@@ -17,8 +17,8 @@ class Heap {
    * @param {Number} index
    * @returns {Number}
    */
-  parentIndex (index) {
-    return Math.floor((index - 1) / 2)
+  parentIndex(index) {
+    return Math.floor((index - 1) / 2);
   }
 
   /**
@@ -26,14 +26,14 @@ class Heap {
    * @param {*} first
    * @param {*} second
    */
-  swap (first, second) {
-    const temp = this.items[first]
-    this.items[first] = this.items[second]
-    this.items[second] = temp
+  swap(first, second) {
+    const temp = this.items[first];
+    this.items[first] = this.items[second];
+    this.items[second] = temp;
   }
 
-  bubbleUp () {
-    let index = this.size - 1
+  bubbleUp() {
+    let index = this.size - 1;
 
     while (
       index > 0 &&
@@ -42,9 +42,9 @@ class Heap {
         this.items[this.parentIndex(index)]
       )
     ) {
-      const parentIndex = this.parentIndex(index)
-      this.swap(index, parentIndex)
-      index = parentIndex
+      const parentIndex = this.parentIndex(index);
+      this.swap(index, parentIndex);
+      index = parentIndex;
     }
   }
 
@@ -52,10 +52,10 @@ class Heap {
    *
    * @param {*} data
    */
-  insert (data) {
-    if (this.size === this.maxSize) throw new Error('Heap is full')
-    this.items[this.size++] = data
-    this.bubbleUp()
+  insert(data) {
+    if (this.size === this.maxSize) throw new Error("Heap is full");
+    this.items[this.size++] = data;
+    this.bubbleUp();
   }
 
   /**
@@ -63,8 +63,8 @@ class Heap {
    * @param {Number} index
    * @returns {Number}
    */
-  leftChildIndex (index) {
-    return index * 2 + 1
+  leftChildIndex(index) {
+    return index * 2 + 1;
   }
 
   /**
@@ -72,8 +72,8 @@ class Heap {
    * @param {Number} index
    * @returns {Number}
    */
-  rightChildIndex (index) {
-    return index * 2 + 2
+  rightChildIndex(index) {
+    return index * 2 + 2;
   }
 
   /**
@@ -81,8 +81,8 @@ class Heap {
    * @param {Number} index
    * @returns {*}
    */
-  leftChild (index) {
-    return this.items[this.leftChildIndex(index)]
+  leftChild(index) {
+    return this.items[this.leftChildIndex(index)];
   }
 
   /**
@@ -90,8 +90,8 @@ class Heap {
    * @param {Number} index
    * @returns {*}
    */
-  rightChild (index) {
-    return this.items[this.rightChildIndex(index)]
+  rightChild(index) {
+    return this.items[this.rightChildIndex(index)];
   }
 
   /**
@@ -99,8 +99,8 @@ class Heap {
    * @param {Number} index
    * @returns {Boolean}
    */
-  hasLeftChild (index) {
-    return this.leftChildIndex(index) <= this.size
+  hasLeftChild(index) {
+    return this.leftChildIndex(index) <= this.size;
   }
 
   /**
@@ -108,8 +108,8 @@ class Heap {
    * @param {Number} index
    * @returns {Boolean}
    */
-  hasRightChild (index) {
-    return this.rightChildIndex(index) <= this.size
+  hasRightChild(index) {
+    return this.rightChildIndex(index) <= this.size;
   }
 
   /**
@@ -117,13 +117,13 @@ class Heap {
    * @param {Number} index
    * @returns {Boolean}
    */
-  isValidParent (index) {
-    if (!this.hasLeftChild(index)) return true
+  isValidParent(index) {
+    if (!this.hasLeftChild(index)) return true;
     if (!this.hasRightChild(index))
       return this.compare.greaterThanOrEqual(
         this.items[index],
         this.items[this.leftChildIndex(index)]
-      )
+      );
     return (
       this.compare.greaterThanOrEqual(
         this.items[index],
@@ -133,7 +133,7 @@ class Heap {
         this.items[index],
         this.items[this.rightChildIndex(index)]
       )
-    )
+    );
   }
 
   /**
@@ -141,23 +141,23 @@ class Heap {
    * @param {Number} index
    * @returns {Number}
    */
-  largestItemIndex (index) {
-    if (!this.hasLeftChild(index)) return index
-    if (!this.hasRightChild(index)) return this.leftChildIndex(index)
+  largestItemIndex(index) {
+    if (!this.hasLeftChild(index)) return index;
+    if (!this.hasRightChild(index)) return this.leftChildIndex(index);
     return this.compare.greaterThan(
       this.leftChild(index),
       this.rightChild(index)
     )
       ? this.leftChildIndex(index)
-      : this.rightChildIndex(index)
+      : this.rightChildIndex(index);
   }
 
-  bubbleDown () {
-    let index = 0
+  bubbleDown() {
+    let index = 0;
     while (index <= this.size && !this.isValidParent(index)) {
-      const largestItemIndex = this.largestItemIndex(index)
-      this.swap(index, largestItemIndex)
-      index = largestItemIndex
+      const largestItemIndex = this.largestItemIndex(index);
+      this.swap(index, largestItemIndex);
+      index = largestItemIndex;
     }
   }
 
@@ -165,81 +165,81 @@ class Heap {
    *
    * @returns {*}
    */
-  remove () {
-    if (this.size === 0) throw new Error('Heap is empty')
-    const root = this.items[0]
-    this.items[0] = this.items[--this.size]
-    this.bubbleDown()
-    return root
+  remove() {
+    if (this.size === 0) throw new Error("Heap is empty");
+    const root = this.items[0];
+    this.items[0] = this.items[--this.size];
+    this.bubbleDown();
+    return root;
   }
 
   /**
    *
    * @returns {*}
    */
-  getMax () {
-    if (this.size === 0) throw new Error('Heap is empty')
-    return this.items[0]
+  getMax() {
+    if (this.size === 0) throw new Error("Heap is empty");
+    return this.items[0];
   }
 
   /**
    *
    * @returns {*[]}
    */
-  getItems () {
-    return this.items
+  getItems() {
+    return this.items;
   }
 
   /**
    *
    * @returns {Boolean}
    */
-  isEmpty () {
-    return this.size === 0
+  isEmpty() {
+    return this.size === 0;
   }
 
   /**
    *
    * @param {*[]} items
    */
-  static heapify (items, comapareFunction) {
-    const compare = new Comparator(comapareFunction)
+  static heapify(items, comapareFunction) {
+    const compare = new Comparator(comapareFunction);
 
-    function swap (first, second) {
-      const temp = items[first]
-      items[first] = items[second]
-      items[second] = temp
+    function swap(first, second) {
+      const temp = items[first];
+      items[first] = items[second];
+      items[second] = temp;
     }
 
-    function _heapify (index) {
-      let largerIndex = index
+    function _heapify(index) {
+      let largerIndex = index;
 
-      const leftIndex = index * 2 + 1
+      const leftIndex = index * 2 + 1;
       if (
         leftIndex < items.length &&
         compare.greaterThan(items[leftIndex], items[largerIndex])
       ) {
-        largerIndex = leftIndex
+        largerIndex = leftIndex;
       }
 
-      const rightIndex = index * 2 + 2
+      const rightIndex = index * 2 + 2;
       if (
         rightIndex < items.length &&
         compare.greaterThan(items[rightIndex], items[largerIndex])
       ) {
-        largerIndex = rightIndex
+        largerIndex = rightIndex;
       }
 
-      if (largerIndex === index) return
+      if (largerIndex === index) return;
 
-      swap(index, largerIndex)
-      _heapify(largerIndex)
+      swap(index, largerIndex);
+      _heapify(largerIndex);
     }
     // for (let i = 0; i < items.length; i++) _heapify(i)
-    const lastParentIndex = items.length / 2 - 1
+    const lastParentIndex = items.length / 2 - 1;
     // for (let i = 0; i < lastParentIndex; i++) _heapify(i)
-    for (let i = lastParentIndex; i >= 0; i--) _heapify(i)
+    for (let i = lastParentIndex; i >= 0; i--) _heapify(i);
   }
 }
 
-module.exports = Heap
+module.exports = Heap;

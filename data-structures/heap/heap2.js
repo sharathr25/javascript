@@ -1,16 +1,28 @@
 const Comparator = require("../Comparator");
 
 class Heap {
+  /**
+   *
+   * @param {*} compareFunction
+   */
   constructor(compareFunction) {
     this.items = [];
     this.comparator = new Comparator(compareFunction);
   }
 
+  /**
+   *
+   * @param {*} data
+   */
   insert(data) {
     this.items.push(data);
     this._bubbleUp(this.items.length - 1);
   }
 
+  /**
+   *
+   * @returns {*}
+   */
   pop() {
     if (!this.items.length) return null;
 
@@ -20,6 +32,10 @@ class Heap {
     return popped;
   }
 
+  /**
+   *
+   * @param {number} index
+   */
   _bubbleUp(index) {
     if (index <= 0) return;
 
@@ -30,6 +46,10 @@ class Heap {
     }
   }
 
+  /**
+   *
+   * @param {number} index
+   */
   _bubbleDown(index) {
     const left = index * 2 + 1;
     const right = index * 2 + 2;
@@ -55,24 +75,26 @@ class Heap {
     }
   }
 
+  /**
+   *
+   * @param {number} i
+   * @param {number} j
+   */
   _swap(i, j) {
     const temp = this.items[i];
     this.items[i] = this.items[j];
     this.items[j] = temp;
   }
+
+  /**
+   *
+   * @param {[*]} arr
+   */
+  insertArr(arr) {
+    this.items = arr;
+    const lastParentIndex = this.items.length / 2 - 1;
+    for (let i = 0; i < lastParentIndex; i++) this._bubbleDown(i);
+  }
 }
 
-// checking
-
-// const heap = new Heap();
-// heap.insert(10);
-// heap.insert(2);
-// heap.insert(5);
-// heap.insert(3);
-// heap.insert(1);
-// console.log(heap.pop());
-// console.log(heap.pop());
-// console.log(heap.pop());
-// console.log(heap.pop());
-// console.log(heap.pop());
-// console.log(heap.pop());
+module.exports = Heap;

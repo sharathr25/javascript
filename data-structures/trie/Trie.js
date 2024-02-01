@@ -1,8 +1,8 @@
-const TrieNode = require('./TrieNode')
+const TrieNode = require("./TrieNode");
 
 class Trie {
-  constructor () {
-    this.root = new TrieNode('*')
+  constructor() {
+    this.root = new TrieNode("*");
   }
 
   /**
@@ -10,16 +10,16 @@ class Trie {
    * @param {String} word
    * @returns {Trie}
    */
-  insert (word) {
-    let current = this.root
+  insert(word) {
+    let current = this.root;
 
     for (const char of word) {
-      if (!current.hasChild(char)) current.setChild(char)
-      current = current.getChild(char)
+      if (!current.hasChild(char)) current.setChild(char);
+      current = current.getChild(char);
     }
 
-    current.isCompleteWord = true
-    return this
+    current.isCompleteWord = true;
+    return this;
   }
 
   /**
@@ -27,15 +27,15 @@ class Trie {
    * @param {String} word
    * @returns {Boolean}
    */
-  contains (word) {
-    let current = this.root
+  contains(word) {
+    let current = this.root;
 
     for (const char of word) {
-      if (!current.hasChild(char)) return false
-      current = current.getChild(char)
+      if (!current.hasChild(char)) return false;
+      current = current.getChild(char);
     }
 
-    return current.isCompleteWord
+    return current.isCompleteWord;
   }
 
   /**
@@ -44,17 +44,17 @@ class Trie {
    * @param {TrieNode} root
    * @param {Number} index
    */
-  remove (word, root = this.root, index = 0) {
+  remove(word, root = this.root, index = 0) {
     if (index === word.length) {
-      root.isCompleteWord = false
-      return
+      root.isCompleteWord = false;
+      return;
     }
-    const ch = word[index]
-    const child = root.getChild(ch)
-    if (!child) return
-    this.remove(word, child, index + 1)
+    const ch = word[index];
+    const child = root.getChild(ch);
+    if (!child) return;
+    this.remove(word, child, index + 1);
     if (!child.hasChildren() && !child.isCompleteWord) {
-      root.removeChild(ch)
+      root.removeChild(ch);
     }
   }
 
@@ -63,23 +63,23 @@ class Trie {
    * @param {String} prefix
    * @returns {[String]}
    */
-  findWords (prefix) {
+  findWords(prefix) {
     const _findWords = (prefix, root, words) => {
-      if (!root) return
+      if (!root) return;
 
-      if (root.isCompleteWord) words.push(prefix)
+      if (root.isCompleteWord) words.push(prefix);
 
-      root.getChildren().forEach(child => {
-        _findWords(prefix + child.character, child, words)
-      })
-    }
+      root.getChildren().forEach((child) => {
+        _findWords(prefix + child.character, child, words);
+      });
+    };
 
-    if (!prefix) return []
-    const lastNode = this.findLastNode(prefix)
-    if (!lastNode) return []
-    const words = []
-    _findWords(prefix, lastNode, words)
-    return words
+    if (!prefix) return [];
+    const lastNode = this.findLastNode(prefix);
+    if (!lastNode) return [];
+    const words = [];
+    _findWords(prefix, lastNode, words);
+    return words;
   }
 
   /**
@@ -87,17 +87,17 @@ class Trie {
    * @param {String} prefix
    * @returns {TrieNode}
    */
-  findLastNode (prefix) {
-    let current = this.root
+  _findLastNode(prefix) {
+    let current = this.root;
 
     for (const char of prefix) {
-      const child = current.getChild(char)
-      if (!child) return null
-      current = child
+      const child = current.getChild(char);
+      if (!child) return null;
+      current = child;
     }
 
-    return current
+    return current;
   }
 }
 
-module.exports = Trie
+module.exports = Trie;

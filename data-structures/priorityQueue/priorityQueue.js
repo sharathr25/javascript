@@ -1,25 +1,25 @@
-const Heap = require('../heap/heap')
+const Heap = require("../heap/Heap");
 
 class ProrityQueue {
-  constructor (compareFunction) {
-    this.heap = new Heap(compareFunction)
+  constructor(compareFunction) {
+    this.heap = new Heap(compareFunction);
   }
 
-  enqueue (item) {
-    this.heap.insert(item)
+  enqueue(item) {
+    this.heap.insert(item);
   }
 
-  dequeue () {
-    return this.heap.remove()
+  dequeue() {
+    return this.heap.remove();
   }
 
-  isEmpty () {
-    return this.heap.isEmpty()
+  isEmpty() {
+    return this.heap.isEmpty();
   }
 
-  printQueue () {
-    console.log(this.heap.getItems())
+  printQueue() {
+    console.log(this.heap.getItems());
   }
 }
 
-module.exports = ProrityQueue
+module.exports = ProrityQueue;
