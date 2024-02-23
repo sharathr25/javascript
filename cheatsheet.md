@@ -227,7 +227,7 @@ ex: [1,2,3] <- 4 => [1,2,3,4]
 array.push(4);
 ```
 
-## pop an element from end of exisiting array
+## pop an element from the end of exisiting array
 
 ex: [1,2,3,4] -> 4
 
@@ -243,7 +243,7 @@ ex: 4 -> [1,2,3] => [4,1,2,3]
 array.unshift(4);
 ```
 
-## pop an element from end of exisiting array
+## pop an element from the front of exisiting array
 
 ex: 4 <- [4,1,2,3]
 
@@ -283,7 +283,7 @@ ex: [1,2,3] -> true - when all are true
 array.every((e, i, a) => e > 0);
 ```
 
-## every - to check any element satisfies our condition
+## some - to check any element satisfies our condition
 
 ex: [1,2,3] -> true - when any one is true
 
