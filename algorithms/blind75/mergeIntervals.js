@@ -20,23 +20,23 @@ Explanation: Intervals [1,4] and [4,5] are considered overlapping.
  * @return {number[][]}
  */
 var merge = function (intervals) {
-  const res = []
+  const res = [];
 
-  intervals.sort((a, b) => a[0] - b[0])
+  intervals.sort((a, b) => a[0] - b[0]);
 
-  let prev = intervals[0]
+  let prev = intervals[0];
   for (let i = 1; i < intervals.length; i++) {
-    const [x, y] = prev
-    const [a, b] = intervals[i]
+    const [x, y] = prev;
+    const [a, b] = intervals[i];
     if (a <= y) {
-      prev = [Math.min(x, a), Math.max(y, b)]
+      prev = [Math.min(x, a), Math.max(y, b)];
     } else {
-      res.push(prev)
-      prev = [a, b]
+      res.push(prev);
+      prev = [a, b];
     }
   }
 
-  res.push(prev) // push last item
+  res.push(prev); // push last item
 
-  return res
-}
+  return res;
+};

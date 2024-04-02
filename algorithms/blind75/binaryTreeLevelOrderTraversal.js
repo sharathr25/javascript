@@ -36,17 +36,17 @@ Output: []
  * @return {number[][]}
  */
 var levelOrder = function (root) {
-  const res = []
+  const res = [];
 
   const dfs = (root, k) => {
-    if (!root) return
-    if (res[k]) res[k].push(root.val)
-    else res[k] = [root.val]
-    dfs(root.left, k + 1)
-    dfs(root.right, k + 1)
-  }
+    if (!root) return;
+    if (res[k]) res[k].push(root.val);
+    else res[k] = [root.val];
+    dfs(root.left, k + 1);
+    dfs(root.right, k + 1);
+  };
 
-  dfs(root, 0)
+  dfs(root, 0);
 
-  return res
-}
+  return res;
+};

@@ -18,14 +18,14 @@ Output: [1]
  * @return {number[]}
  */
 const topKFrequent = function (nums, k) {
-  const map = new Map()
+  const map = new Map();
 
-  nums.forEach(n =>
+  nums.forEach((n) =>
     map.set(n, { value: n, count: map.has(n) ? map.get(n).count + 1 : 1 })
-  )
+  );
 
   return [...map.values()]
     .sort((a, b) => b.count - a.count)
     .slice(0, k)
-    .map(({ value }) => value)
-}
+    .map(({ value }) => value);
+};

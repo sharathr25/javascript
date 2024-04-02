@@ -20,19 +20,19 @@ Output: false
  * @return {boolean}
  */
 var isAnagram = function (s, t) {
-  if (s.length !== t.length) return false
+  if (s.length !== t.length) return false;
 
-  const freq = new Map()
+  const freq = new Map();
   for (const ch of s) {
-    freq.set(ch, freq.get(ch) ? freq.get(ch) + 1 : 1)
+    freq.set(ch, freq.get(ch) ? freq.get(ch) + 1 : 1);
   }
 
   for (const ch of t) {
-    if (!freq.has(ch)) return false
+    if (!freq.has(ch)) return false;
 
-    if (freq.get(ch) === 1) freq.delete(ch)
-    else freq.set(ch, freq.get(ch) - 1)
+    if (freq.get(ch) === 1) freq.delete(ch);
+    else freq.set(ch, freq.get(ch) - 1);
   }
 
-  return freq.size === 0
-}
+  return freq.size === 0;
+};

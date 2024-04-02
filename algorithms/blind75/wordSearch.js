@@ -53,36 +53,36 @@ Output: false
  * @return {boolean}
  */
 var exist = function (board, word) {
-  const rSize = board.length
-  const cSize = board[0].length
+  const rSize = board.length;
+  const cSize = board[0].length;
 
   const dfs = (r, c, i) => {
-    if (i === word.length) return true
+    if (i === word.length) return true;
 
-    const letter = word.charAt(i)
+    const letter = word.charAt(i);
 
     if (r < 0 || r >= rSize || c < 0 || c >= cSize || letter !== board[r][c])
-      return false
+      return false;
 
-    let temp = board[r][c]
-    board[r][c] = '*'
+    let temp = board[r][c];
+    board[r][c] = "*";
 
     const res =
       dfs(r + 1, c, i + 1) ||
       dfs(r - 1, c, i + 1) ||
       dfs(r, c + 1, i + 1) ||
-      dfs(r, c - 1, i + 1)
+      dfs(r, c - 1, i + 1);
 
-    board[r][c] = temp
+    board[r][c] = temp;
 
-    return res
-  }
+    return res;
+  };
 
   for (let i = 0; i < rSize; i++) {
     for (let j = 0; j < cSize; j++) {
-      if (dfs(i, j, 0)) return true
+      if (dfs(i, j, 0)) return true;
     }
   }
 
-  return false
-}
+  return false;
+};

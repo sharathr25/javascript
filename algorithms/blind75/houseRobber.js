@@ -25,18 +25,18 @@ Total amount you can rob = 2 + 9 + 1 = 12.
  */
 var rob = function (nums) {
   const dfs = (start, memo) => {
-    if (start in memo) return memo[start]
-    if (start >= nums.length) return 0
+    if (start in memo) return memo[start];
+    if (start >= nums.length) return 0;
 
-    let max = 0
+    let max = 0;
 
     for (let i = start; i < nums.length; i++) {
-      max = Math.max(nums[i] + dfs(i + 2, memo), max)
+      max = Math.max(nums[i] + dfs(i + 2, memo), max);
     }
 
-    memo[start] = max
-    return max
-  }
+    memo[start] = max;
+    return max;
+  };
 
-  return dfs(0, {})
-}
+  return dfs(0, {});
+};

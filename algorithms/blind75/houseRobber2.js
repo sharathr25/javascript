@@ -26,21 +26,21 @@ Output: 3
  * @return {number}
  */
 var rob = function (nums) {
-  if (nums.length === 1) return nums[0]
+  if (nums.length === 1) return nums[0];
 
   const dfs = (start, end, memo) => {
-    if (start in memo) return memo[start]
-    if (start > end) return 0
+    if (start in memo) return memo[start];
+    if (start > end) return 0;
 
-    let max = 0
+    let max = 0;
 
     for (let i = start; i <= end; i++) {
-      max = Math.max(nums[i] + dfs(i + 2, end, memo), max)
+      max = Math.max(nums[i] + dfs(i + 2, end, memo), max);
     }
 
-    memo[start] = max
-    return max
-  }
+    memo[start] = max;
+    return max;
+  };
 
-  return Math.max(dfs(0, nums.length - 2, {}), dfs(1, nums.length - 1, {}))
-}
+  return Math.max(dfs(0, nums.length - 2, {}), dfs(1, nums.length - 1, {}));
+};

@@ -22,17 +22,19 @@ Explanation: In this case, no transactions are done and the max profit = 0.
  * @return {number}
  */
 const maxProfit = function (prices) {
-  let maxProfit = 0
-  let minimumBuyAmount = prices[0]
+  let maxProfit = 0;
+  let minimumBuyAmount = prices[0];
 
   for (let i = 1; i < prices.length; i++) {
-    const profit = prices[i] - minimumBuyAmount
-    if (prices[i] < minimumBuyAmount) {
-      minimumBuyAmount = prices[i]
-    } else if (profit > maxProfit) {
-      maxProfit = profit
-    }
+    maxProfit = Math.max(prices[i] - minimumBuyAmount, maxProfit);
+    minimumBuyAmount = Math.min(prices[i], minimumBuyAmount);
+    // const profit = prices[i] - minimumBuyAmount;
+    // if (prices[i] < minimumBuyAmount) {
+    //   minimumBuyAmount = prices[i];
+    // } else if (profit > maxProfit) {
+    //   maxProfit = profit;
+    // }
   }
 
-  return maxProfit
-}
+  return maxProfit;
+};

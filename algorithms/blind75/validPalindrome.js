@@ -27,21 +27,21 @@ Since an empty string reads the same forward and backward, it is a palindrome.
  * @return {boolean}
  */
 var isPalindrome = function (s) {
-  let i = 0
-  let j = s.length - 1
+  let i = 0;
+  let j = s.length - 1;
   while (i <= j) {
     if (/[a-z0-9A-Z]/.test(s[i]) && /[a-z0-9A-Z]/.test(s[j])) {
       if (s[i].toLowerCase() === s[j].toLowerCase()) {
-        i++
-        j--
+        i++;
+        j--;
       } else {
-        return false
+        return false;
       }
     } else {
-      if (!/[a-z0-9A-Z]/.test(s[i])) i++
-      if (!/[a-z0-9A-Z]/.test(s[j])) j--
+      if (!/[a-z0-9A-Z]/.test(s[i])) i++;
+      if (!/[a-z0-9A-Z]/.test(s[j])) j--;
     }
   }
 
-  return true
-}
+  return true;
+};

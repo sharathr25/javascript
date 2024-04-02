@@ -30,29 +30,29 @@ wordDictionary.search("b.."); // return True
 */
 
 var TrieNode = function (char) {
-  this.char = char
-  this.children = new Map()
-  this.endOfWord = false
-}
+  this.char = char;
+  this.children = new Map();
+  this.endOfWord = false;
+};
 
 var WordDictionary = function () {
-  this.root = new TrieNode('*')
-}
+  this.root = new TrieNode("*");
+};
 
 /**
  * @param {string} word
  * @return {void}
  */
 WordDictionary.prototype.addWord = function (word) {
-  let current = this.root
+  let current = this.root;
   for (const ch of word) {
     if (!current.children.has(ch)) {
-      current.children.set(ch, new TrieNode(ch))
+      current.children.set(ch, new TrieNode(ch));
     }
-    current = current.children.get(ch)
+    current = current.children.get(ch);
   }
-  current.endOfWord = true
-}
+  current.endOfWord = true;
+};
 
 /**
  * @param {string} word
@@ -60,22 +60,22 @@ WordDictionary.prototype.addWord = function (word) {
  */
 WordDictionary.prototype.search = function (word, current = this.root) {
   for (let i = 0; i < word.length; i++) {
-    const ch = word[i]
-    if (ch === '.') {
-      let res = false
+    const ch = word[i];
+    if (ch === ".") {
+      let res = false;
       for (const child of current.children.values()) {
-        res ||= this.search(word.slice(i + 1), child)
+        res ||= this.search(word.slice(i + 1), child);
       }
-      return res
+      return res;
     } else if (current.children.has(ch)) {
-      current = current.children.get(ch)
+      current = current.children.get(ch);
     } else {
-      return false
+      return false;
     }
   }
 
-  return current.endOfWord
-}
+  return current.endOfWord;
+};
 
 /**
  * Your WordDictionary object will be instantiated and called as such:

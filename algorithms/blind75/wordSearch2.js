@@ -38,54 +38,54 @@ Output: []
  * @return {string[]}
  */
 var findWords = function (board, words) {
-  const ROW = board.length
-  const COLUMN = board[0].length
+  const ROW = board.length;
+  const COLUMN = board[0].length;
 
-  const res = []
+  const res = [];
 
   const check = (node, r, c) => {
     if (node.end) {
-      res.push(node.end)
-      node.end = null
+      res.push(node.end);
+      node.end = null;
     }
-    if (r < 0 || r >= ROW) return
-    if (c < 0 || c >= COLUMN) return
-    const char = board[r][c]
-    if (!node[char]) return
+    if (r < 0 || r >= ROW) return;
+    if (c < 0 || c >= COLUMN) return;
+    const char = board[r][c];
+    if (!node[char]) return;
 
-    const temp = char
-    board[r][c] = '*'
-    check(node[char], r + 1, c)
-    check(node[char], r - 1, c)
-    check(node[char], r, c + 1)
-    check(node[char], r, c - 1)
-    board[r][c] = temp
-  }
+    const temp = char;
+    board[r][c] = "*";
+    check(node[char], r + 1, c);
+    check(node[char], r - 1, c);
+    check(node[char], r, c + 1);
+    check(node[char], r, c - 1);
+    board[r][c] = temp;
+  };
 
   const buildTrie = () => {
-    const root = {}
+    const root = {};
 
     for (const word of words) {
-      let current = root
+      let current = root;
 
       for (const char of word) {
-        if (!current[char]) current[char] = {}
-        current = current[char]
+        if (!current[char]) current[char] = {};
+        current = current[char];
       }
 
-      current.end = word
+      current.end = word;
     }
 
-    return root
-  }
+    return root;
+  };
 
-  const root = buildTrie(words)
+  const root = buildTrie(words);
 
   for (let i = 0; i < board.length; i++) {
     for (let j = 0; j < board[i].length; j++) {
-      check(root, i, j)
+      check(root, i, j);
     }
   }
 
-  return res
-}
+  return res;
+};

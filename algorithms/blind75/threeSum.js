@@ -31,29 +31,29 @@ Explanation: The only possible triplet sums up to 0.
  * @return {number[][]}
  */
 var threeSum = function (nums) {
-  const visited = new Set()
-  const resSet = new Map()
+  const visited = new Set();
+  const resSet = new Map();
 
   for (let i = 0; i < nums.length - 2; i++) {
-    if (visited.has(nums[i])) continue
+    if (visited.has(nums[i])) continue;
 
-    visited.add(nums[i])
+    visited.add(nums[i]);
 
-    const set = new Set()
-    const sum = -nums[i]
+    const set = new Set();
+    const sum = -nums[i];
     for (let j = i + 1; j < nums.length; j++) {
       if (set.has(sum - nums[j])) {
-        const a = -sum
-        const b = sum - nums[j]
-        const c = nums[j]
-        const arr = [a, b, c].sort()
-        const str = arr.join(',')
+        const a = -sum;
+        const b = sum - nums[j];
+        const c = nums[j];
+        const arr = [a, b, c].sort();
+        const str = arr.join(",");
         if (!resSet.has(str)) {
-          resSet.set(str, arr)
+          resSet.set(str, arr);
         }
-      } else set.add(nums[j])
+      } else set.add(nums[j]);
     }
   }
 
-  return [...resSet.values()]
-}
+  return [...resSet.values()];
+};

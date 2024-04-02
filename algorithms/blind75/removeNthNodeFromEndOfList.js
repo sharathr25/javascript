@@ -36,28 +36,28 @@ Output: [1]
  */
 var removeNthFromEnd = function (head, n) {
   // get total nodes
-  let total = 0
-  let current = head
+  let total = 0;
+  let current = head;
   while (current) {
-    total++
-    current = current.next
+    total++;
+    current = current.next;
   }
 
   // traveral upto nth node from the end
-  current = head
-  let prev = null
+  current = head;
+  let prev = null;
   while (total !== n) {
-    total--
-    prev = current
-    current = current.next
+    total--;
+    prev = current;
+    current = current.next;
   }
 
   // remove nth node
   if (current === head) {
-    head = head.next
+    head = head.next;
   } else {
-    prev.next = current.next
+    prev.next = current.next;
   }
 
-  return head
-}
+  return head;
+};

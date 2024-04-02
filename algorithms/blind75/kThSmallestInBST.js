@@ -43,18 +43,18 @@ Output: 3
  */
 
 var kthSmallest = function (root, k) {
-  let count = 0
-  let min = 0
+  let count = 0;
+  let min = 0;
 
   const _kthSmallest = (root, k) => {
-    if (!root) return
-    if (count > k) return
-    _kthSmallest(root.left, k)
-    if (++count === k) min = root.val
-    _kthSmallest(root.right, k)
-  }
+    if (!root) return;
+    if (count > k) return;
+    _kthSmallest(root.left, k);
+    if (++count === k) min = root.val;
+    _kthSmallest(root.right, k);
+  };
 
-  _kthSmallest(root, k)
+  _kthSmallest(root, k);
 
-  return min
-}
+  return min;
+};

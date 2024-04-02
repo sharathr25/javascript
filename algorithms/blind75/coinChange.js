@@ -27,17 +27,17 @@ Output: 0
  * @return {number}
  */
 var coinChange = function (coins, amount, memo = {}) {
-  if (amount in memo) return memo[amount]
-  if (amount === 0) return 0
-  if (amount < 0) return -1
+  if (amount in memo) return memo[amount];
+  if (amount === 0) return 0;
+  if (amount < 0) return -1;
 
-  let minCount = Infinity
+  let minCount = Infinity;
   for (const coin of coins) {
-    const res = coinChange(coins, amount - coin, memo) + 1
+    const res = coinChange(coins, amount - coin, memo) + 1;
     if (res > 0) {
-      minCount = Math.min(res, minCount)
+      minCount = Math.min(res, minCount);
     }
   }
-  memo[amount] = minCount
-  return minCount
-}
+  memo[amount] = minCount;
+  return minCount;
+};

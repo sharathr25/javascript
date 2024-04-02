@@ -25,18 +25,18 @@ Notice that the answer must be a substring, "pwke" is a subsequence and not a su
  * @return {number}
  */
 var lengthOfLongestSubstring = function (s) {
-  let max = 0
-  let subStr = ''
+  let max = 0;
+  let subStr = "";
 
   for (let i = 0; i < s.length; i++) {
-    const ch = s[i]
-    const index = subStr.indexOf(ch)
+    const ch = s[i];
+    const index = subStr.indexOf(ch);
     if (index !== -1) {
-      subStr = subStr.substring(index + 1, i)
+      subStr = subStr.substring(index + 1, i);
     }
-    subStr += ch
-    max = Math.max(max, subStr.length)
+    subStr += ch;
+    max = Math.max(max, subStr.length);
   }
 
-  return max
-}
+  return max;
+};

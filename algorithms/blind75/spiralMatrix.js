@@ -34,65 +34,65 @@ Output: [1,2,3,4,8,12,11,10,9,5,6,7]
  * @return {number[]}
  */
 var spiralOrder = function (matrix) {
-  const m = matrix.length
-  const n = matrix[0].length
-  const res = []
-  let count = 0
-  let i = 0
-  let j = 0
-  let direction = 'r'
-  let rEnd = n - 1
-  let lEnd = 0
-  let dEnd = m - 1
-  let uEnd = 1
+  const m = matrix.length;
+  const n = matrix[0].length;
+  const res = [];
+  let count = 0;
+  let i = 0;
+  let j = 0;
+  let direction = "r";
+  let rEnd = n - 1;
+  let lEnd = 0;
+  let dEnd = m - 1;
+  let uEnd = 1;
 
   while (count < m * n) {
-    count++
-    res.push(matrix[i][j])
+    count++;
+    res.push(matrix[i][j]);
 
     switch (direction) {
-      case 'r': {
+      case "r": {
         if (j === rEnd) {
-          i++
-          rEnd--
-          direction = 'd'
+          i++;
+          rEnd--;
+          direction = "d";
         } else {
-          j++
+          j++;
         }
-        break
+        break;
       }
-      case 'd': {
+      case "d": {
         if (i === dEnd) {
-          j--
-          dEnd--
-          direction = 'l'
+          j--;
+          dEnd--;
+          direction = "l";
         } else {
-          i++
+          i++;
         }
-        break
+        break;
       }
-      case 'l': {
+      case "l": {
         if (j === lEnd) {
-          i--
-          lEnd++
-          direction = 'u'
+          i--;
+          lEnd++;
+          direction = "u";
         } else {
-          j--
+          j--;
         }
-        break
+        break;
       }
-      case 'u': {
+      case "u": {
         if (i === uEnd) {
-          j++
-          uEnd++
-          direction = 'r'
+          j++;
+          uEnd++;
+          direction = "r";
         } else {
-          i--
+          i--;
         }
-        break
+        break;
       }
     }
   }
 
-  return res
-}
+  return res;
+};

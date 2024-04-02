@@ -37,24 +37,24 @@ Output: [[0,0,0,0],[0,4,5,0],[0,3,1,0]]
  * @return {void} Do not return anything, modify matrix in-place instead.
  */
 var setZeroes = function (matrix) {
-  const rowsWithZero = new Set()
-  const columnsWithZero = new Set()
+  const rowsWithZero = new Set();
+  const columnsWithZero = new Set();
   for (let i = 0; i < matrix.length; i++) {
     for (let j = 0; j < matrix[i].length; j++) {
       if (matrix[i][j] === 0) {
-        rowsWithZero.add(i)
-        columnsWithZero.add(j)
+        rowsWithZero.add(i);
+        columnsWithZero.add(j);
       }
     }
   }
-  rowsWithZero.forEach(row => {
+  rowsWithZero.forEach((row) => {
     for (let i = 0; i < matrix[0].length; i++) {
-      matrix[row][i] = 0
+      matrix[row][i] = 0;
     }
-  })
-  columnsWithZero.forEach(column => {
+  });
+  columnsWithZero.forEach((column) => {
     for (let i = 0; i < matrix.length; i++) {
-      matrix[i][column] = 0
+      matrix[i][column] = 0;
     }
-  })
-}
+  });
+};

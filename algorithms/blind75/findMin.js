@@ -32,28 +32,28 @@ Explanation: The original array was [11,13,15,17] and it was rotated 4 times.
  * @return {number}
  */
 var findMin = function (nums) {
-  let l = 0
-  let r = nums.length - 1
-  let min = nums[0]
+  let l = 0;
+  let r = nums.length - 1;
+  let min = nums[0];
 
   while (l <= r) {
     if (nums[l] < nums[r]) {
       // if array is sorted from l to r
-      min = Math.min(nums[l], min)
-      break
+      min = Math.min(nums[l], min);
+      break;
     }
 
-    const m = Math.floor((l + r) / 2) // get mid
-    min = Math.min(nums[m], min) // check and set min
+    const m = Math.floor((l + r) / 2); // get mid
+    min = Math.min(nums[m], min); // check and set min
 
     if (nums[l] <= nums[m]) {
       // go right
-      l = m + 1
+      l = m + 1;
     } else {
       // go left
-      r = m - 1
+      r = m - 1;
     }
   }
 
-  return min
-}
+  return min;
+};

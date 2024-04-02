@@ -43,36 +43,36 @@ Output: [1,5,2,4,3]
  */
 var reorderList = function (head) {
   // get total nodes
-  let current = head
-  let total = 0
+  let current = head;
+  let total = 0;
   while (current) {
-    total++
-    current = current.next
+    total++;
+    current = current.next;
   }
 
   // push right half of the nodes to the stack
-  const stack = []
-  current = head
-  const halfOfTotal = total / 2
+  const stack = [];
+  current = head;
+  const halfOfTotal = total / 2;
   while (current) {
-    total--
-    const next = current.next
+    total--;
+    const next = current.next;
     if (total <= halfOfTotal) {
-      current.next = null
+      current.next = null;
     }
     if (total < halfOfTotal) {
-      stack.push(current)
+      stack.push(current);
     }
-    current = next
+    current = next;
   }
 
   // re-order by poping stack
-  current = head
+  current = head;
   while (stack.length) {
-    const next = current.next
-    const node = stack.pop()
-    current.next = node
-    node.next = next
-    current = next
+    const next = current.next;
+    const node = stack.pop();
+    current.next = node;
+    node.next = next;
+    current = next;
   }
-}
+};

@@ -42,15 +42,15 @@ Output: []
  * @return {TreeNode}
  */
 var invertTree = function (root) {
-  dfs(root)
-  return root
-}
+  dfs(root);
+  return root;
+};
 
 var dfs = function (root) {
-  if (!root) return
-  dfs(root.left)
-  dfs(root.right)
-  const temp = root.left
-  root.left = root.right
-  root.right = temp
-}
+  if (!root) return;
+  dfs(root.left);
+  dfs(root.right);
+  const temp = root.left;
+  root.left = root.right;
+  root.right = temp;
+};

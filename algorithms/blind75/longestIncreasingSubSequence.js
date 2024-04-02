@@ -25,17 +25,17 @@ Output: 1
  */
 
 var maxSubSequence = function (nums, start = 0, prev = -1, memo = {}) {
-  if (prev in memo) return memo[prev]
+  if (prev in memo) return memo[prev];
 
-  if (start === nums.length) return 0
+  if (start === nums.length) return 0;
 
-  let max = 0
+  let max = 0;
   for (let i = start; i < nums.length; i++) {
     if (prev === -1 || nums[i] > nums[prev]) {
-      max = Math.max(1 + maxSubSequence(nums, i + 1, i, memo), max)
+      max = Math.max(1 + maxSubSequence(nums, i + 1, i, memo), max);
     }
   }
 
-  memo[prev] = max
-  return max
-}
+  memo[prev] = max;
+  return max;
+};

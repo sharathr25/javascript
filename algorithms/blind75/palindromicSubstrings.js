@@ -23,19 +23,19 @@ Explanation: Six palindromic strings: "a", "a", "a", "aa", "aa", "aaa".
  * @return {number}
  */
 var countSubstrings = function (s) {
-  let count = 0
+  let count = 0;
   for (let i = 0; i < s.length; i++) {
-    count += _countSubstrings(s, i, i + 1) + _countSubstrings(s, i, i)
+    count += _countSubstrings(s, i, i + 1) + _countSubstrings(s, i, i);
   }
-  return count
-}
+  return count;
+};
 
 var _countSubstrings = function (s, left, right) {
-  let count = 0
+  let count = 0;
   while (left >= 0 && right <= s.length - 1 && s[left] === s[right]) {
-    count++
-    right++
-    left--
+    count++;
+    right++;
+    left--;
   }
-  return count
-}
+  return count;
+};

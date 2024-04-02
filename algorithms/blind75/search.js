@@ -28,29 +28,29 @@ Output: -1
  * @return {number}
  */
 var search = function (nums, target) {
-  let l = 0
-  let r = nums.length - 1
+  let l = 0;
+  let r = nums.length - 1;
 
   while (l <= r) {
-    const m = Math.floor((l + r) / 2)
-    if (nums[m] === target) return m
+    const m = Math.floor((l + r) / 2);
+    if (nums[m] === target) return m;
 
     if (nums[m + 1] <= nums[r]) {
       // right sorted
       if (target >= nums[m + 1] && target <= nums[r]) {
-        l = m + 1
+        l = m + 1;
       } else {
-        r = m - 1
+        r = m - 1;
       }
     } else {
       // left sorted
       if (target >= nums[l] && target <= nums[m - 1]) {
-        r = m - 1
+        r = m - 1;
       } else {
-        l = l + 1
+        l = l + 1;
       }
     }
   }
 
-  return -1
-}
+  return -1;
+};

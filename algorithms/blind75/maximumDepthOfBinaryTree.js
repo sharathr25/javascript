@@ -35,9 +35,9 @@ Output: 2
  * @return {number}
  */
 var maxDepth = function (root) {
-  const _maxDepth = root => {
-    if (!root) return 0
-    return 1 + Math.max(_maxDepth(root.left), _maxDepth(root.right))
-  }
-  return _maxDepth(root)
-}
+  const _maxDepth = (root) => {
+    if (!root) return 0;
+    return 1 + Math.max(_maxDepth(root.left), _maxDepth(root.right));
+  };
+  return _maxDepth(root);
+};

@@ -39,20 +39,20 @@ Output: [[15,13,2,5],[14,3,4,1],[12,6,8,9],[16,7,10,11]]
  * @return {void} Do not return anything, modify matrix in-place instead.
  */
 var rotate = function (matrix) {
-  let l = 0
-  let r = matrix.length - 1
+  let l = 0;
+  let r = matrix.length - 1;
 
   while (l < r) {
-    const t = l
-    const b = r
+    const t = l;
+    const b = r;
     for (let i = 0; i < r - l; i++) {
-      const temp = matrix[t][l + i]
-      matrix[t][l + i] = matrix[b - i][l]
-      matrix[b - i][l] = matrix[b][r - i]
-      matrix[b][r - i] = matrix[t + i][r]
-      matrix[t + i][r] = temp
+      const temp = matrix[t][l + i];
+      matrix[t][l + i] = matrix[b - i][l];
+      matrix[b - i][l] = matrix[b][r - i];
+      matrix[b][r - i] = matrix[t + i][r];
+      matrix[t + i][r] = temp;
     }
-    l++
-    r--
+    l++;
+    r--;
   }
-}
+};

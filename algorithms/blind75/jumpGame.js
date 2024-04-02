@@ -22,17 +22,17 @@ Explanation: You will always arrive at index 3 no matter what. Its maximum jump 
  */
 var canJump = function (nums) {
   const dfs = (i, memo) => {
-    if (i in memo) return memo[i]
-    if (i === nums.length - 1) return true
+    if (i in memo) return memo[i];
+    if (i === nums.length - 1) return true;
     for (let j = 1; j <= nums[i]; j++) {
       if (dfs(i + j, memo)) {
-        memo[i] = true
-        return true
+        memo[i] = true;
+        return true;
       }
     }
-    memo[i] = false
-    return false
-  }
+    memo[i] = false;
+    return false;
+  };
 
-  return dfs(0, {})
-}
+  return dfs(0, {});
+};

@@ -35,116 +35,116 @@ Output: []
  * }
  */
 const defaultCompareFunction = (a, b) => {
-  if (a === b) return 0
-  return a < b ? -1 : 1
-}
+  if (a === b) return 0;
+  return a < b ? -1 : 1;
+};
 
 class Heap {
-  constructor (compareFunction = defaultCompareFunction) {
-    this.items = []
-    this.size = 0
-    this.compare = compareFunction
+  constructor(compareFunction = defaultCompareFunction) {
+    this.items = [];
+    this.size = 0;
+    this.compare = compareFunction;
   }
 
-  equals (a, b) {
-    return this.compare(a, b) === 0
+  equals(a, b) {
+    return this.compare(a, b) === 0;
   }
 
-  lessThan (a, b) {
-    return this.compare(a, b) < 0
+  lessThan(a, b) {
+    return this.compare(a, b) < 0;
   }
 
-  lessThanOrEqual (a, b) {
-    return this.lessThan(a, b) || this.equals(a, b)
+  lessThanOrEqual(a, b) {
+    return this.lessThan(a, b) || this.equals(a, b);
   }
 
-  swap (first, second) {
-    const temp = this.items[first]
-    this.items[first] = this.items[second]
-    this.items[second] = temp
+  swap(first, second) {
+    const temp = this.items[first];
+    this.items[first] = this.items[second];
+    this.items[second] = temp;
   }
 
-  parentIndex (index) {
-    return Math.floor((index - 1) / 2)
+  parentIndex(index) {
+    return Math.floor((index - 1) / 2);
   }
 
-  bubbleUp () {
-    let index = this.size - 1
+  bubbleUp() {
+    let index = this.size - 1;
 
     while (
       index > 0 &&
       this.lessThan(this.items[index], this.items[this.parentIndex(index)])
     ) {
-      const parentIndex = this.parentIndex(index)
-      this.swap(index, parentIndex)
-      index = parentIndex
+      const parentIndex = this.parentIndex(index);
+      this.swap(index, parentIndex);
+      index = parentIndex;
     }
   }
 
-  insert (val) {
-    this.items[this.size++] = val
-    this.bubbleUp()
+  insert(val) {
+    this.items[this.size++] = val;
+    this.bubbleUp();
   }
 
-  leftChildIndex (index) {
-    return index * 2 + 1
+  leftChildIndex(index) {
+    return index * 2 + 1;
   }
 
-  hasLeftChild (index) {
-    return this.leftChildIndex(index) <= this.size
+  hasLeftChild(index) {
+    return this.leftChildIndex(index) <= this.size;
   }
 
-  leftChild (index) {
-    return this.items[this.leftChildIndex(index)]
+  leftChild(index) {
+    return this.items[this.leftChildIndex(index)];
   }
 
-  rightChildIndex (index) {
-    return index * 2 + 2
+  rightChildIndex(index) {
+    return index * 2 + 2;
   }
 
-  hasRightChild (index) {
-    return this.rightChildIndex(index) <= this.size
+  hasRightChild(index) {
+    return this.rightChildIndex(index) <= this.size;
   }
 
-  rightChild (index) {
-    return this.items[this.rightChildIndex(index)]
+  rightChild(index) {
+    return this.items[this.rightChildIndex(index)];
   }
 
-  validParent (index) {
-    if (!this.hasLeftChild(index)) return true
+  validParent(index) {
+    if (!this.hasLeftChild(index)) return true;
     if (!this.hasRightChild(index))
-      return this.lessThanOrEqual(this.items[index], this.leftChild(index))
+      return this.lessThanOrEqual(this.items[index], this.leftChild(index));
 
     return (
       this.lessThanOrEqual(this.items[index], this.leftChild(index)) &&
       this.lessThanOrEqual(this.items[index], this.rightChild(index))
-    )
+    );
   }
 
-  smallestChildIndex (index) {
-    if (!this.hasLeftChild(index)) return index
-    if (!this.hasRightChild(index)) return this.leftChildIndex(index)
+  smallestChildIndex(index) {
+    if (!this.hasLeftChild(index)) return index;
+    if (!this.hasRightChild(index)) return this.leftChildIndex(index);
 
     return this.lessThan(this.leftChild(index), this.rightChild(index))
       ? this.leftChildIndex(index)
-      : this.rightChildIndex(index)
+      : this.rightChildIndex(index);
   }
 
-  bubbleDown () {
-    let index = 0
+  bubbleDown() {
+    let index = 0;
 
     while (index <= this.size && !this.validParent(index)) {
-      const smallestChildIndex = this.smallestChildIndex(index)
-      this.swap(index, smallestChildIndex)
-      index = smallestChildIndex
+      const smallestChildIndex = this.smallestChildIndex(index);
+      this.swap(index, smallestChildIndex);
+      index = smallestChildIndex;
     }
   }
 
-  remove () {
-    const root = this.items[0]
-    this.items[0] = this.items[--this.size]
-    this.bubbleDown()
-    return root
+  remove() {
+    const root = this.items[0];
+    this.items[0] = this.items[--this.size];
+    this.bubbleDown();
+    return root;
   }
 }
 /**
@@ -154,34 +154,34 @@ class Heap {
 var mergeKLists = function (lists) {
   // create a heap
   const heap = new Heap((a, b) => {
-    if (a.val === b.val) return 0
-    return a.val < b.val ? -1 : 1
-  })
+    if (a.val === b.val) return 0;
+    return a.val < b.val ? -1 : 1;
+  });
 
   // insert all list nodes to head
-  lists.forEach(root => {
-    let current = root
+  lists.forEach((root) => {
+    let current = root;
 
     while (current) {
-      heap.insert(current)
-      current = current.next
+      heap.insert(current);
+      current = current.next;
     }
-  })
+  });
 
   // pop from heap and create new linked list
-  let root = null
-  let tail = null
-  const count = heap.size
+  let root = null;
+  let tail = null;
+  const count = heap.size;
   for (let k = 1; k <= count; k++) {
-    const newNode = heap.remove()
-    newNode.next = null
+    const newNode = heap.remove();
+    newNode.next = null;
     if (!root) {
-      root = tail = newNode
+      root = tail = newNode;
     } else {
-      tail.next = newNode
-      tail = newNode
+      tail.next = newNode;
+      tail = newNode;
     }
   }
 
-  return root
-}
+  return root;
+};

@@ -43,21 +43,21 @@ Explanation: The optimal path is 15 -> 20 -> 7 with a path sum of 15 + 20 + 7 = 
  * @return {number}
  */
 var maxPathSum = function (root) {
-  let max = root.val
+  let max = root.val;
 
-  const _maxPathSum = root => {
-    if (!root) return 0
+  const _maxPathSum = (root) => {
+    if (!root) return 0;
 
-    let leftSum = _maxPathSum(root.left)
-    let rightSum = _maxPathSum(root.right)
-    leftSum = Math.max(leftSum, 0)
-    rightSum = Math.max(rightSum, 0)
+    let leftSum = _maxPathSum(root.left);
+    let rightSum = _maxPathSum(root.right);
+    leftSum = Math.max(leftSum, 0);
+    rightSum = Math.max(rightSum, 0);
 
-    max = Math.max(root.val + leftSum + rightSum, max)
+    max = Math.max(root.val + leftSum + rightSum, max);
 
-    return root.val + Math.max(leftSum, rightSum)
-  }
+    return root.val + Math.max(leftSum, rightSum);
+  };
 
-  _maxPathSum(root)
-  return max
-}
+  _maxPathSum(root);
+  return max;
+};

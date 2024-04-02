@@ -46,13 +46,13 @@ Output: false
  * @return {boolean}
  */
 var isSubtree = function (root, subRoot) {
-  if (!root) return false
+  if (!root) return false;
   if (root.val === subRoot.val) {
-    const temp = root
-    if (isSame(temp, subRoot)) return true
+    const temp = root;
+    if (isSame(temp, subRoot)) return true;
   }
-  return isSubtree(root.left, subRoot) || isSubtree(root.right, subRoot)
-}
+  return isSubtree(root.left, subRoot) || isSubtree(root.right, subRoot);
+};
 
 /**
  * @param {TreeNode} root1
@@ -60,10 +60,10 @@ var isSubtree = function (root, subRoot) {
  * @return {boolean}
  */
 var isSame = function (root1, root2) {
-  if (!root1 && !root2) return true
-  if (root1 && !root2) return false
-  if (!root1 && root2) return false
-  if (root1.val !== root2.val) return false
+  if (!root1 && !root2) return true;
+  if (root1 && !root2) return false;
+  if (!root1 && root2) return false;
+  if (root1.val !== root2.val) return false;
 
-  return isSame(root1.left, root2.left) && isSame(root1.right, root2.right)
-}
+  return isSame(root1.left, root2.left) && isSame(root1.right, root2.right);
+};

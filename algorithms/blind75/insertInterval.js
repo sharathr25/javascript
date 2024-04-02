@@ -23,23 +23,23 @@ Explanation: Because the new interval [4,8] overlaps with [3,5],[6,7],[8,10].
  * @return {number[][]}
  */
 var insert = function (intervals, newInterval) {
-  const res = []
+  const res = [];
 
   for (let i = 0; i < intervals.length; i++) {
-    const interval = intervals[i]
+    const interval = intervals[i];
     if (newInterval[1] < interval[0]) {
-      return [...res, newInterval, ...intervals.slice(i)]
+      return [...res, newInterval, ...intervals.slice(i)];
     } else if (newInterval[0] > interval[1]) {
-      res.push(interval)
+      res.push(interval);
     } else {
       newInterval = [
         Math.min(newInterval[0], interval[0]),
-        Math.max(newInterval[1], interval[1])
-      ]
+        Math.max(newInterval[1], interval[1]),
+      ];
     }
   }
 
-  res.push(newInterval) // to handle edge case, where new interval doesn't overlap with any interval
+  res.push(newInterval); // to handle edge case, where new interval doesn't overlap with any interval
 
-  return res
-}
+  return res;
+};

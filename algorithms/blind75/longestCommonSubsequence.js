@@ -31,18 +31,18 @@ Explanation: There is no such common subsequence, so the result is 0.
  */
 var longestCommonSubsequence = function (text1, text2) {
   const dfs = (s1, s2, memo) => {
-    const key = `${s1},${s2}`
-    if (key in memo) return memo[key]
-    if (s1 === text1.length || s2 === text2.length) return 0
+    const key = `${s1},${s2}`;
+    if (key in memo) return memo[key];
+    if (s1 === text1.length || s2 === text2.length) return 0;
 
     if (text1[s1] === text2[s2]) {
-      memo[key] = 1 + dfs(s1 + 1, s2 + 1, memo)
+      memo[key] = 1 + dfs(s1 + 1, s2 + 1, memo);
     } else {
-      memo[key] = Math.max(dfs(s1, s2 + 1, memo), dfs(s1 + 1, s2, memo))
+      memo[key] = Math.max(dfs(s1, s2 + 1, memo), dfs(s1 + 1, s2, memo));
     }
 
-    return memo[key]
-  }
+    return memo[key];
+  };
 
-  return dfs(0, 0, {})
-}
+  return dfs(0, 0, {});
+};

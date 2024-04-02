@@ -38,22 +38,22 @@ Explanation: "06" cannot be mapped to "F" because of the leading zero ("6" is di
  * @return {number}
  */
 var numDecodings = function (s, memo = {}) {
-  if (s in memo) return memo[s]
-  if (s.charAt(0) === '0') return 0
-  const sAsNumber = parseInt(s)
-  if (s.length === 1 && sAsNumber >= 1 && sAsNumber <= 9) return 1
-  if (s.length === 2 && sAsNumber === 10) return 1
-  if (s.length === 2 && sAsNumber === 20) return 1
-  if (s.length === 2 && sAsNumber >= 11 && sAsNumber <= 26) return 2
+  if (s in memo) return memo[s];
+  if (s.charAt(0) === "0") return 0;
+  const sAsNumber = parseInt(s);
+  if (s.length === 1 && sAsNumber >= 1 && sAsNumber <= 9) return 1;
+  if (s.length === 2 && sAsNumber === 10) return 1;
+  if (s.length === 2 && sAsNumber === 20) return 1;
+  if (s.length === 2 && sAsNumber >= 11 && sAsNumber <= 26) return 2;
 
-  let count = 0
+  let count = 0;
   for (let i = 1; i <= 26; i++) {
-    const c = `${i}`
+    const c = `${i}`;
     if (s.indexOf(c) === 0) {
-      count += numDecodings(s.slice(c.length), memo)
+      count += numDecodings(s.slice(c.length), memo);
     }
   }
 
-  memo[s] = count
-  return count
-}
+  memo[s] = count;
+  return count;
+};

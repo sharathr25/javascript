@@ -33,14 +33,14 @@ Output: [-1]
  * @return {TreeNode}
  */
 var buildTree = function (preorder, inorder) {
-  if (!inorder.length) return null
+  if (!inorder.length) return null;
 
-  const rootValue = preorder.shift()
-  const mid = inorder.indexOf(rootValue)
+  const rootValue = preorder.shift();
+  const mid = inorder.indexOf(rootValue);
 
-  const root = new TreeNode(rootValue)
-  root.left = buildTree(preorder, inorder.slice(0, mid))
-  root.right = buildTree(preorder, inorder.slice(mid + 1))
+  const root = new TreeNode(rootValue);
+  root.left = buildTree(preorder, inorder.slice(0, mid));
+  root.right = buildTree(preorder, inorder.slice(mid + 1));
 
-  return root
-}
+  return root;
+};

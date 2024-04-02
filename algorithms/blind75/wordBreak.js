@@ -28,21 +28,21 @@ Output: false
  */
 var wordBreak = function (s, wordDict) {
   const dfs = (s, memo) => {
-    if (s in memo) return memo[s]
-    if (s === '') return true
+    if (s in memo) return memo[s];
+    if (s === "") return true;
 
     for (const word of wordDict) {
       if (s.indexOf(word) === 0) {
         if (dfs(s.slice(word.length), memo)) {
-          memo[s] = true
-          return true
+          memo[s] = true;
+          return true;
         }
       }
     }
 
-    memo[s] = false
-    return false
-  }
+    memo[s] = false;
+    return false;
+  };
 
-  return dfs(s, {})
-}
+  return dfs(s, {});
+};

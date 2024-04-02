@@ -27,19 +27,19 @@ Output: false
  * @return {boolean}
  */
 var isValid = function (s) {
-  const stack = []
+  const stack = [];
 
   for (const ch of s) {
-    const top = stack[stack.length - 1]
-    if (ch === '(' || ch === '{' || ch === '[') stack.push(ch)
+    const top = stack[stack.length - 1];
+    if (ch === "(" || ch === "{" || ch === "[") stack.push(ch);
     else if (
-      (ch === ')' && top === '(') ||
-      (ch === '}' && top === '{') ||
-      (ch === ']' && top === '[')
+      (ch === ")" && top === "(") ||
+      (ch === "}" && top === "{") ||
+      (ch === "]" && top === "[")
     )
-      stack.pop()
-    else return false
+      stack.pop();
+    else return false;
   }
 
-  return stack.length === 0
-}
+  return stack.length === 0;
+};

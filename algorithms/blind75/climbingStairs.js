@@ -29,10 +29,10 @@ var climbStairs = function (n, memo = {}) {
   // This is just fib series
   // If we need to find for n steps we need to find fib(n)
   // here i have used recursive programming
-  if (n in memo) return memo[n]
-  if (n === 0) return 1
-  if (n < 0) return 0
+  if (n in memo) return memo[n];
+  if (n === 0) return 1;
+  if (n < 0) return 0;
 
-  memo[n] = climbStairs(n - 1, memo) + climbStairs(n - 2, memo)
-  return memo[n]
-}
+  memo[n] = climbStairs(n - 1, memo) + climbStairs(n - 2, memo);
+  return memo[n];
+};

@@ -23,25 +23,25 @@ The substring "BBBB" has the longest repeating letters, which is 4.
  * @return {number}
  */
 var characterReplacement = function (s, k) {
-  const freq = {}
-  let res = 0
-  let left = 0
-  let right = 0
+  const freq = {};
+  let res = 0;
+  let left = 0;
+  let right = 0;
   while (right < s.length) {
-    freq[s[right]] = freq[s[right]] ? freq[s[right]] + 1 : 1
-    const length = right - left + 1
-    const maxFreq = Math.max(...Object.values(freq))
+    freq[s[right]] = freq[s[right]] ? freq[s[right]] + 1 : 1;
+    const length = right - left + 1;
+    const maxFreq = Math.max(...Object.values(freq));
     if (length - maxFreq <= k) {
-      res = Math.max(res, length)
+      res = Math.max(res, length);
     } else {
-      freq[s[left]]--
-      left++
+      freq[s[left]]--;
+      left++;
     }
-    right++
+    right++;
   }
 
-  return res
-}
+  return res;
+};
 
 // if we maintain a max freq we don't need to check all the frequencies to get max
 /**
@@ -50,23 +50,23 @@ var characterReplacement = function (s, k) {
  * @return {number}
  */
 var characterReplacement = function (s, k) {
-  const freq = {}
-  let res = 0
-  let left = 0
-  let right = 0
-  let maxFreq = 0 // if we maintain a max freq we don't need to check all the frequencies to get max
+  const freq = {};
+  let res = 0;
+  let left = 0;
+  let right = 0;
+  let maxFreq = 0; // if we maintain a max freq we don't need to check all the frequencies to get max
   while (right < s.length) {
-    freq[s[right]] = freq[s[right]] ? freq[s[right]] + 1 : 1
-    maxFreq = Math.max(freq[s[right]], maxFreq)
-    const length = right - left + 1
+    freq[s[right]] = freq[s[right]] ? freq[s[right]] + 1 : 1;
+    maxFreq = Math.max(freq[s[right]], maxFreq);
+    const length = right - left + 1;
     if (length - maxFreq <= k) {
-      res = Math.max(res, length)
+      res = Math.max(res, length);
     } else {
-      freq[s[left]]--
-      left++
+      freq[s[left]]--;
+      left++;
     }
-    right++
+    right++;
   }
 
-  return res
-}
+  return res;
+};

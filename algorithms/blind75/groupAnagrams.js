@@ -23,23 +23,23 @@ Output: [["a"]]
  * @return {string[][]}
  */
 var groupAnagrams = function (strs) {
-  const anagrams = {}
-  const charCodeOfA = 'a'.charCodeAt(0)
+  const anagrams = {};
+  const charCodeOfA = "a".charCodeAt(0);
   for (const str of strs) {
-    const freq = new Array(26).fill(0)
-    for (const ch of str) freq[ch.charCodeAt(0) - charCodeOfA]++
-    if (!anagrams[freq]) anagrams[freq] = []
-    anagrams[freq].push(str)
+    const freq = new Array(26).fill(0);
+    for (const ch of str) freq[ch.charCodeAt(0) - charCodeOfA]++;
+    if (!anagrams[freq]) anagrams[freq] = [];
+    anagrams[freq].push(str);
   }
 
-  return Object.values(anagrams)
-}
+  return Object.values(anagrams);
+};
 
 // NOTE
 // when we pass an array as key to object the items of array will be joined with ,
 // thats we are using to freq obj in the groupAnagrams function
-const obj = {}
+const obj = {};
 
-obj[[1, 2, 3]] = 'a'
+obj[[1, 2, 3]] = "a";
 
-console.log(obj) // { '1,2,3': 'a' }
+console.log(obj); // { '1,2,3': 'a' }

@@ -19,7 +19,7 @@ Output: true
  * @return {boolean}
  */
 const containsDuplicate = function (nums) {
-  const set = new Set()
-  nums.forEach(set.add, set)
-  return set.size !== nums.length
-}
+  const set = new Set();
+  nums.forEach(set.add, set);
+  return set.size !== nums.length;
+};

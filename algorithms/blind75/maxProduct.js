@@ -23,16 +23,16 @@ Explanation: The result cannot be 2, because [-2,-1] is not a subarray.
  * @return {number}
  */
 var maxProduct = function (nums) {
-  let curMax = 1
-  let curMin = 1
-  let res = -Infinity
+  let curMax = 1;
+  let curMin = 1;
+  let res = -Infinity;
 
   for (const num of nums) {
-    const temp = num * curMax // since we are updating curMax next
-    curMax = Math.max(temp, num * curMin, num)
-    curMin = Math.min(temp, num * curMin, num)
-    res = Math.max(res, curMax)
+    const temp = num * curMax; // since we are updating curMax next
+    curMax = Math.max(temp, num * curMin, num);
+    curMin = Math.min(temp, num * curMin, num);
+    res = Math.max(res, curMax);
   }
 
-  return res
-}
+  return res;
+};

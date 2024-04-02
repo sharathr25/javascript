@@ -29,61 +29,61 @@ trie.search("app");     // return True
 */
 
 var TrieNode = function (char) {
-  this.char = char
-  this.children = new Map()
-  this.endOfWord = false
-}
+  this.char = char;
+  this.children = new Map();
+  this.endOfWord = false;
+};
 
 var Trie = function () {
-  this.root = new TrieNode('*')
-}
+  this.root = new TrieNode("*");
+};
 
 /**
  * @param {string} word
  * @return {void}
  */
 Trie.prototype.insert = function (word) {
-  let current = this.root
+  let current = this.root;
   for (const ch of word) {
     if (!current.children.has(ch)) {
-      current.children.set(ch, new TrieNode(ch))
+      current.children.set(ch, new TrieNode(ch));
     }
-    current = current.children.get(ch)
+    current = current.children.get(ch);
   }
-  current.endOfWord = true
-}
+  current.endOfWord = true;
+};
 
 /**
  * @param {string} word
  * @return {boolean}
  */
 Trie.prototype.search = function (word) {
-  let current = this.root
+  let current = this.root;
   for (const ch of word) {
     if (current.children.has(ch)) {
-      current = current.children.get(ch)
+      current = current.children.get(ch);
     } else {
-      return false
+      return false;
     }
   }
-  return current.endOfWord
-}
+  return current.endOfWord;
+};
 
 /**
  * @param {string} prefix
  * @return {boolean}
  */
 Trie.prototype.startsWith = function (prefix) {
-  let current = this.root
+  let current = this.root;
   for (const ch of prefix) {
     if (current.children.has(ch)) {
-      current = current.children.get(ch)
+      current = current.children.get(ch);
     } else {
-      return false
+      return false;
     }
   }
-  return true
-}
+  return true;
+};
 
 /**
  * Your Trie object will be instantiated and called as such:

@@ -45,10 +45,10 @@ Explanation: The root node's value is 5 but its right child's value is 4.
  * @return {boolean}
  */
 var isValidBST = function (root, max = null, min = null) {
-  if (!root) return true
+  if (!root) return true;
 
-  if (max && max.val <= root.val) return false
-  if (min && min.val >= root.val) return false
+  if (max && max.val <= root.val) return false;
+  if (min && min.val >= root.val) return false;
 
-  return isValidBST(root.left, root, min) && isValidBST(root.right, max, root)
-}
+  return isValidBST(root.left, root, min) && isValidBST(root.right, max, root);
+};

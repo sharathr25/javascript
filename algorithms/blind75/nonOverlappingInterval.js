@@ -25,20 +25,20 @@ Explanation: You don't need to remove any of the intervals since they're already
  * @return {number}
  */
 var eraseOverlapIntervals = function (_intervals) {
-  const intervals = _intervals.sort((a, b) => a[0] - b[0])
-  let count = 0
-  let prev = intervals[0]
+  const intervals = _intervals.sort((a, b) => a[0] - b[0]);
+  let count = 0;
+  let prev = intervals[0];
 
   for (let i = 1; i < intervals.length; i++) {
     if (intervals[i][0] >= prev[1] && intervals[i][1] > prev[0]) {
       //no overlap
-      prev = intervals[i]
+      prev = intervals[i];
     } else {
       //overlap
-      count++
-      if (intervals[i][1] < prev[1]) prev = intervals[i] //set minimum interval
+      count++;
+      if (intervals[i][1] < prev[1]) prev = intervals[i]; //set minimum interval
     }
   }
 
-  return count
-}
+  return count;
+};

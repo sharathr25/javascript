@@ -30,15 +30,15 @@ Output: 0
  * @return {number}
  */
 var combinationSum4 = function (nums, target, memo = {}) {
-  if (target in memo) return memo[target]
-  if (target === 0) return 1
-  if (target < 0) return 0
+  if (target in memo) return memo[target];
+  if (target === 0) return 1;
+  if (target < 0) return 0;
 
-  let count = 0
+  let count = 0;
   for (let i = 0; i < nums.length; i++) {
-    count += combinationSum4(nums, target - nums[i], memo)
+    count += combinationSum4(nums, target - nums[i], memo);
   }
 
-  memo[target] = count
-  return count
-}
+  memo[target] = count;
+  return count;
+};
