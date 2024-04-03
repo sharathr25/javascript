@@ -1,4 +1,4 @@
-const { mergeAlternately } = require("./mergeStringsAlternately");
+const { mergeAlternately } = require("./code");
 
 describe("Merge Strings Alternately", () => {
   test("Test Case 1", () => {
