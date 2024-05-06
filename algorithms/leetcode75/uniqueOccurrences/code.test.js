@@ -1,6 +1,6 @@
 const { uniqueOccurrences } = require("./code");
 
-describe("Is Subsequence?", () => {
+describe("Unique Number of Occurrences", () => {
   test("Test Case 1", () => {
     expect(uniqueOccurrences([1, 2, 2, 1, 1, 3])).toBeTruthy();
   });

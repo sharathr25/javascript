@@ -1,6 +1,6 @@
 const { moveZeroes } = require("./code");
 
-describe("Determine if Two Strings Are Close", () => {
+describe("Move Zeroes", () => {
   test("Test Case 1", () => {
     const expected = [1, 3, 12, 0, 0];
     const actual = [0, 1, 0, 3, 12];

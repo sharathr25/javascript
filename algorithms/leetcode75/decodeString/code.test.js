@@ -1,6 +1,6 @@
 const { decodeString } = require("./code");
 
-describe("Determine if Two Strings Are Close", () => {
+describe("Decode String", () => {
   test("Test Case 1", () => {
     const expected = "aaabcbc";
     const actual = decodeString("3[a]2[bc]");

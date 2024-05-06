@@ -1,6 +1,6 @@
 const { compress } = require("./code");
 
-describe("Determine if Two Strings Are Close", () => {
+describe("String Compression", () => {
   test("Test Case 1", () => {
     const arr = ["a", "a", "b", "b", "c", "c", "c"];
     const expected = 6;

@@ -1,6 +1,6 @@
 const { letterCombinations } = require("./code");
 
-describe("Determine if Two Strings Are Close", () => {
+describe("Letter Combinations of a Phone Number", () => {
   test("Test Case 1", () => {
     const expected = ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"];
     const actual = letterCombinations("23");

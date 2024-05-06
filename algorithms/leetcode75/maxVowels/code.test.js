@@ -1,6 +1,6 @@
 const { maxVowels, isVowel } = require("./code");
 
-describe("Merge Strings Alternately", () => {
+describe("Maximum Number of Vowels in a Substring of Given", () => {
   test("Test Case 1", () => {
     const expected = 3;
     const actual = maxVowels("abciiidef", 3);

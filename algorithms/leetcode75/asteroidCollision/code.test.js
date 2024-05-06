@@ -1,6 +1,6 @@
 const { asteroidCollision } = require("./code");
 
-describe("Determine if Two Strings Are Close", () => {
+describe("Asteroid Collision", () => {
   test("Test Case 1", () => {
     const expected = [5, 10];
     const actual = asteroidCollision([5, 10, -5]);

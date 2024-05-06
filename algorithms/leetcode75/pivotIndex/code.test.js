@@ -1,6 +1,6 @@
 const { pivotIndex } = require("./code");
 
-describe("Find the Highest Altitude", () => {
+describe("Find Pivot Index", () => {
   test("Test Case 1", () => {
     const expected = 3;
     const actual = pivotIndex([1, 7, 3, 6, 5, 6]);
